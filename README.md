@@ -33,7 +33,6 @@ portfolio/
 - React.js
 - HTML5, CSS3, JavaScript
 - Git & GitHub
-- [Optional: any libraries like Tailwind CSS, Framer Motion, etc.]
 
 ## 📸 Screenshots
 
@@ -44,7 +43,7 @@ _Add screenshots of your portfolio UI here if you'd like._
 **Kaushik P**
 
 - GitHub: [@Kaushik-123-p](https://github.com/Kaushik-123-p)
-- LinkedIn: [Your LinkedIn URL here]
+- LinkedIn: https://www.linkedin.com/in/kaushik-prajapati-23944b212/
 
 ## 📦 Setup Instructions
 
