@@ -31,7 +31,7 @@ const SocialLinks = () => {
           Mail <HiOutlineMail size={30} />
         </>
       ),
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=prajapatikaushik6392@gmail.com",  // Direct link to Gmail
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=prajapatikaushik6392@gmail.com", // Direct link to Gmail
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ const SocialLinks = () => {
           Resume <BsFillPersonLinesFill size={30} />
         </>
       ),
-      href: "/resume.pdf",
+      href: "/public/kaushik_Front-End.pdf",
       style: "rounded-br-md",
       download: true,
     },
@@ -62,7 +62,7 @@ const SocialLinks = () => {
               href={href}
               className="flex justify-between items-center w-full text-white"
               download={download}
-              target="_blank"  // Opens link in a new tab
+              target="_blank" // Opens link in a new tab
               rel="noreferrer"
             >
               {child}

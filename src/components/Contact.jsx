@@ -1,56 +1,44 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
-  // State for managing form submission status
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setSuccess(false);
     setError(false);
 
-    // Basic form validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setError(true);
-      setLoading(false);
-      return;
-    }
-
-    const form = e.target;
-    const formDataToSend = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formDataToSend,
-      });
-
-      if (response.ok) {
+    emailjs
+      .send(
+        "service_pg2itja", // Your Service ID
+        "template_fu2p2ar", // Your Template ID
+        formData, // The data you're sending
+        "j6_9TBUh9P0UDPQdL" // Your Public Key
+      )
+      .then(() => {
         setSuccess(true);
-      } else {
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch(() => {
         setError(true);
-      }
-    } catch (err) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -63,64 +51,59 @@ const Contact = () => {
           <p className="text-4xl font-bold inline border-b-4 border-gray-500">
             Contact
           </p>
-          <p className="py-6">Submit the form below to get in touch with me</p>
+          <p className="py-6">Submit the form below to send me a message</p>
         </div>
 
-        <div className="flex justify-center items-center">
-          <form
-            action="https://getform.io/f/61c99527-2b15-42cf-9b55-ad37d2f7daa6"
-            method="POST"
-            className="flex flex-col w-full md:w-1/2"
-            onSubmit={handleSubmit}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col w-full md:w-1/2 mx-auto"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="p-2 bg-transparent border-2 rounded-md text-white mb-4"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="p-2 bg-transparent border-2 rounded-md text-white mb-4"
+          />
+          <textarea
+            name="message"
+            rows="6"
+            placeholder="Your message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="p-2 bg-transparent border-2 rounded-md text-white mb-4"
+          ></textarea>
+
+          <button
+            type="submit"
+            className="bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 rounded-md hover:scale-110 transition-transform mx-auto text-white"
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleChange}
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            />
-            <textarea
-              name="message"
-              placeholder="Enter your message"
-              rows="10"
-              value={formData.message}
-              onChange={handleChange}
-              className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
-            ></textarea>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+        </form>
 
-            <button
-              type="submit"
-              className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300"
-            >
-              {loading ? (
-                <span className="animate-spin">Submitting...</span>
-              ) : (
-                "Let's talk"
-              )}
-            </button>
-          </form>
-
-          {success && (
-            <div className="mt-4 text-green-500">
-              Thank you! Your message has been sent successfully.
-            </div>
-          )}
-          {error && (
-            <div className="mt-4 text-red-500">
-              Oops! Something went wrong or the form is incomplete. Please try again.
-            </div>
-          )}
-        </div>
+        {success && (
+          <p className="text-green-500 text-center mt-4">
+            ✅ Message sent successfully!
+          </p>
+        )}
+        {error && (
+          <p className="text-red-500 text-center mt-4">
+            ❌ Failed to send. Please try again.
+          </p>
+        )}
       </div>
     </div>
   );

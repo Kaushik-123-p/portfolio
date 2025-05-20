@@ -1,54 +1,53 @@
-import React from "react";
-import diceGame from "../assets/portfolio/DiceGame.png";
 import ticTacToe from "../assets/portfolio/Tic-Tac_toe.png";
 import ecommerce from "../assets/portfolio/E-comerce.png";
-import foodApp from "../assets/portfolio/yammiGo-food-app.png"; // Add image for Yummigo if available
-import todoListVue from "../assets/portfolio/todo.png"; // Add image for Todo List Vue
-import movieSearchVue from "../assets/portfolio/Movie-Search-app .png"; // Add image for Movie Search Vue
+import foodApp from "../assets/portfolio/yammiGo-food-app.png";
+import todoListVue from "../assets/portfolio/todo.png";
+import movieSearchVue from "../assets/portfolio/Movie-Search-app .png";
+import taskManager from "../assets/portfolio/task-manager.png";
 
 const Project = () => {
   const Projects = [
     {
       id: 1,
-      src: diceGame,
-      title: "Dice Game",
-      demo: "https://dice-game-six-snowy.vercel.app/",
-      code: "https://github.com/Kaushik-123-p/Dice-Game",
-    },
-    {
-      id: 2,
       src: ticTacToe,
       title: "Tic Tac Toe",
       demo: "https://tic-tac-toe-game-one-beta.vercel.app/",
       code: "https://github.com/Kaushik-123-p/Tic_Tac_Toe_Game",
     },
     {
-      id: 3,
+      id: 2,
       src: ecommerce,
       title: "E-Commerce Website",
       demo: "https://e-comerce-website-frontend.vercel.app/",
-      code: "#", // Replace with GitHub repo when available
+      code: "https://github.com/Kaushik-123-p/E-Comerce-Website-frontend",
     },
     {
-      id: 4,
+      id: 3,
       src: foodApp,
       title: "Yummigo Food App",
       demo: "https://yummigo-food-app.vercel.app/",
-      code: "#", // Replace with GitHub repo when available
+      code: "https://github.com/Kaushik-123-p/yummigo-food-app",
     },
     {
-      id: 5,
+      id: 4,
       src: todoListVue,
       title: "Todo List (Vue.js)",
       demo: "https://todo-list-vuejs-two.vercel.app/",
-      code: "#", // Replace with GitHub repo when available
+      code: "https://github.com/Kaushik-123-p/todo-list",
     },
     {
-      id: 6,
+      id: 5,
       src: movieSearchVue,
       title: "Movie Search App (Vue.js)",
       demo: "https://movie-search-app-vuejs.vercel.app/",
-      code: "#", // Replace with GitHub repo when available
+      code: "https://github.com/Kaushik-123-p/movie-search-app-vuejs",
+    },
+    {
+      id: 6,
+      src: taskManager,
+      title: "Task Manager (Vue.js)",
+      demo: "https://task-manager-vue-pinia.vercel.app/",
+      code: "https://github.com/Kaushik-123-p/task-manager-vue-pinia",
     },
   ];
 
