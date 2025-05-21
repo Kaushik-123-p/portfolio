@@ -22,22 +22,29 @@ const Contact = () => {
     setSuccess(false);
     setError(false);
 
+    // Add a timestamp to the form data
+    const fullData = {
+      ...formData,
+      time: new Date().toLocaleString(), // Current time when the message is sent
+    };
+
     emailjs
       .send(
         "service_pg2itja", // Your Service ID
-        "template_fu2p2ar", // Your Template ID
-        formData, // The data you're sending
+        "template_8d6iaus", // Your Template ID
+        fullData, // The data you're sending, including the time
         "j6_9TBUh9P0UDPQdL" // Your Public Key
       )
       .then(() => {
         setSuccess(true);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "" }); // Clear form after success
       })
-      .catch(() => {
-        setError(true);
+      .catch((error) => {
+        console.error("Error sending message:", error);
+        setError(true); // Show error message
       })
       .finally(() => {
-        setLoading(false);
+        setLoading(false); // Stop the loading state
       });
   };
 
