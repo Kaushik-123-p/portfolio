@@ -40,7 +40,11 @@ const Home = () => {
 
             <div>
               <a
+<<<<<<< HEAD
                 href="/kaushik-prajapati.pdf"
+=======
+                href="/resume.html"
+>>>>>>> 551cffe9e9ed2a89d80d8eeb27ac4311209c9a38
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center bg-gradient-to-r from-teal-500 to-indigo-500 text-white px-6 py-3 rounded-lg my-2 w-fit cursor-pointer transition-transform transform hover:scale-105"

@@ -40,7 +40,11 @@ const SocialLinks = () => {
           Resume <BsFillPersonLinesFill size={30} />
         </>
       ),
+<<<<<<< HEAD
       href: "/kaushik-prajapati.pdf",
+=======
+      href: "/public/kaushik_Front-End.pdf",
+>>>>>>> 551cffe9e9ed2a89d80d8eeb27ac4311209c9a38
       style: "rounded-br-md",
       download: true,
     },
